@@ -6,6 +6,5 @@ git:
 
 before_install: 
   - sudo apt-get update
-  - npm i -g npm@6.9.0
-  - npm install -g typescript
+  # installing Angular 
   - npm install -g @angular/cli
