@@ -1,5 +1,7 @@
 # Projet Web Miage
 
+[![Build Status](https://travis-ci.com/Tommy-dotcom/projet-web-miage.svg?token=rAyisTaP6NRY7iAE3TDo&branch=main)](https://travis-ci.com/Tommy-dotcom/projet-web-miage)
+
 ## Front-End
 
 Nous nous proposons d'utiliser **Angular** pour le développement du front-end et de fournir les différents templates.
@@ -10,4 +12,4 @@ Sachant qu'il serait fastidieux de n'utiliser que CSS pour nos stylisations. Nou
 
 ## Back-End
 
-Nous nous proposons d'utiliser **NodeJS** pour le développement du back-end et de fournir des routes à une API.
+Nous nous proposons d'utiliser **NodeJS** pour le développement du back-end et de fournir des endpoints à une API qui sera utilisé en Front.
