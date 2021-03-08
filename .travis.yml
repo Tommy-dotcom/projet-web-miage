@@ -8,3 +8,7 @@ before_install:
   - sudo apt-get update
   # installing Angular 
   - npm install -g @angular/cli
+
+script:
+  # While we don't have any script to test
+  - cd .
