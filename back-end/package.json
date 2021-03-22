@@ -1,0 +1,16 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "API Service for Projet WEB MIAGE 2021",
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Thomas LAMOTHE, Filiz KARA, Quentin QUERIN",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "swagger-ui-express": "^4.1.6"
+  }
+}
