@@ -2,6 +2,21 @@
 let express = require('express'),
 	bodyParser = require('body-parser');
 
+// MysQL
+const { Sequelize } = require('sequelize');
+
+// Import des credentials
+// Pour éviter de pousser les credentials sur la remote git, nous les stockons dans le fichier credentials.json 
+// qui est ignoré par le .gitignore
+var credentials = require('./credentials.json');
+
+// Connexion à MySQL 
+const sequelize = new Sequelize(credentials.database, credentials.user, credentials.password, {
+    dialect: "mysql",
+    host: credentials.host,
+    port: credentials.port
+});
+
 // Import de Swagger pour la doc de l'API
 const swaggerUi = require('swagger-ui-express'),
 swaggerDocument = require('./swagger.json');
@@ -9,11 +24,13 @@ swaggerDocument = require('./swagger.json');
 // Création de l'application Express
 const port = 8000;
 const app = express();
+
 app.use(
   bodyParser.urlencoded({
     extended: true,
   })
 );
+
 app.use(bodyParser.json());
 app.use("/basic", require("./routes/basic"));
 
