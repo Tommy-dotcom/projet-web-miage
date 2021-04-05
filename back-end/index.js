@@ -30,9 +30,9 @@ app.use(
     extended: true,
   })
 );
-
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use("/basic", require("./routes/basic"));
+app.use("/formation", require("./routes/formation"));
 
 const PORT = process.env.PORT || 8000;
 
@@ -45,4 +45,3 @@ app.listen(PORT, () => {
 	// Notification que l'on est online
 	console.debug("Server listening on port: " + PORT);
 });
-

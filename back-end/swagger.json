@@ -13,35 +13,120 @@
 	"host": "localhost:8000",
 	"basePath": "/",
 	"paths": {
-		"/basic": {
+		"/formation": {
 			"get": {
 				"tags": [
-					"Basic"
+					"Formation"
 				],
-				"summary": "liste des basics de l'application",
+				"summary": "liste des formations en base de données",
 				"responses": {
 					"200": {
-						"description": "Liste complète des basics de l'application",
+						"description": "Liste complète des formations de l'application"
+					},
+					"500": {
+						"description": "Erreur de connexion à la base de données"
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"Formation"
+				],
+				"parameters": [{
+					"in": "body",
+					"name": "name",
+					"description": "Nom de la formation à créer",
+					"schema": {
+						"type": "string"
+					},
+					"required": false
+				}],
+				"summary": "Inscrire une nouvelle formation en base",
+				"responses": {
+					"200": {
+						"description": "Message d'inscription valide"
+					},
+					"400": {
+						"description": "Requête ne comportant pas les bons paramètres"
+					},
+					"500": {
+						"description": "Erreur de connexion à la base de données"
+					}
+				}
+			}
+		},
+		"/formation/{id}": {
+			"get": {
+				"tags": [
+					"Formation"
+				],
+				"summary": "Détails d'une formation",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"schema": {
+						"type": "integer"
+					},
+					"required": true,
+					"description": "identifiant de la formation"
+				}],
+				"responses": {
+					"200": {
+						"description": "Attributs d'une formation",
 						"schema": {
-							"$ref": "#/definitions/Basic"
+							"$ref": "#/definitions/Formation"
 						}
+					},
+					"500": {
+						"description": "Erreur de connexion à la base de données"
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Formation"
+				],
+				"summary": "Supprimer une formation",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"schema": {
+						"type": "integer"
+					},
+					"required": true,
+					"description": "identifiant de la formation"
+				}],
+				"responses": {
+					"200": {
+						"description": "Message de confirmation de la suppression"
+					},
+					"500": {
+						"description": "Erreur de connexion à la base de données"
 					}
 				}
 			}
 		}
-	},
+	},					
 	"tags": [
 		{
-			"name": "Basic",
-			"description": "basic test swagger wooh wooh yeah yeah"
+			"name": "Formation",
+			"description": "C.R.U.D. d'une formation"
 		}
 	],
 	"definitions": {
-		"Basic": {
+		"Formation": {
 			"required": [
-				"test",
-				"test2"
-			]
+				"name",
+				"id"
+			],
+			"properties": {
+				"id": {
+					"type": "integer"
+				},
+				"name": {
+					"type": "string"
+				}
+			}
 		}
 	},
 	"schemes": [

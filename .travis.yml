@@ -11,9 +11,5 @@ before_install:
 
 script:
   # While we don't have any script to test
-  - cd front-end 
-  - npm install
-  - npm start &
-  - cd ..
   - cd back-end
   - npm install
