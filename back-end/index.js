@@ -32,7 +32,9 @@ app.use(
 );
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 app.use("/formation", require("./routes/formation"));
+app.use("/class_type", require("./routes/type"));
 
 const PORT = process.env.PORT || 8000;
 

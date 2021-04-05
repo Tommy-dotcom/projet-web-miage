@@ -105,12 +105,60 @@
 					}
 				}
 			}
+		},
+		"/class_type": {
+			"get": {
+				"tags": [
+					"Type de cours"
+				],
+				"summary": "Liste des types de cours",
+				"responses": {
+					"200": {
+						"description": "Liste des types de cours"
+					},
+					"500": {
+						"description": "Erreur de connexion à la base de données"
+					}
+				}
+			}
+		},
+		"/class_type/{id}": {
+			"get": {
+				"tags": [
+					"Type de cours"
+				],
+				"summary": "Détails d'un type de cours",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"schema": {
+						"type": "integer"
+					},
+					"required": true,
+					"description": "identifiant du type de cours"
+				}],
+				"responses": {
+					"200": {
+						"description": "Détails d'un type de cours",
+						"schema": {
+							"$ref": "#/definitions/ClassType"
+						}
+					},
+					"500": {
+						"description": "Erreur de connexion à la base de données"
+					}
+				}
+			}
 		}
 	},					
 	"tags": [
 		{
 			"name": "Formation",
 			"description": "C.R.U.D. d'une formation"
+		}, 
+		{
+			"name": "Type de cours",
+			"description": "Opérations sur les types d'un cours"
 		}
 	],
 	"definitions": {
@@ -119,6 +167,16 @@
 				"name",
 				"id"
 			],
+			"properties": {
+				"id": {
+					"type": "integer"
+				},
+				"name": {
+					"type": "string"
+				}
+			}
+		},
+		"ClassType": {
 			"properties": {
 				"id": {
 					"type": "integer"
