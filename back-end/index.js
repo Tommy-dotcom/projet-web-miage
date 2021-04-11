@@ -35,6 +35,9 @@ app.use(bodyParser.json());
 
 app.use("/formation", require("./routes/formation"));
 app.use("/class_type", require("./routes/type"));
+app.use("/classe", require('./routes/classe'));
+app.use("/user", require('./routes/user'));
+app.use("/student", require('./routes/student'));
 
 const PORT = process.env.PORT || 8000;
 

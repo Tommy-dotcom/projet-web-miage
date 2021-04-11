@@ -1,3 +1,4 @@
 /back-end/nodes_modules
 /back-end/nodes_modules/*
 /back-end/credentials.json
+.DS_Store

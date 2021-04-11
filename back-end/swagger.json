@@ -149,6 +149,232 @@
 					}
 				}
 			}
+		},
+		"/classe": {
+			"get": {
+				"tags": [
+					"Cours"
+				],
+				"summary": "Liste de tous les cours en base de données",
+				"responses": {
+					"200": {
+						"description": "Liste complète des cours de l'application"
+					},
+					"500": {
+						"description": "Erreur de connexion à la base de données"
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"Cours"
+				],
+				"parameters": [{
+					"in": "body",
+					"name": "title",
+					"description": "Nom du cours",
+					"schema": {
+						"type": "string"
+					},
+					"required": true
+				},
+				{
+					"in": "body",
+					"name": "happenAt",
+					"description": "Heure de début du cours",
+					"schema": {
+						"type": "datetime"
+					},
+					"required": true
+				},
+				{
+					"in": "body",
+					"name": "duration",
+					"description": "durée du cours",
+					"schema": {
+						"type": "integer"
+					},
+					"required": true
+				},
+				{
+					"in": "body",
+					"name": "createdBy",
+					"description": "Identifiant de l'utilisateur qui créé le cours",
+					"schema": {
+						"type": "integer"
+					},
+					"required": true
+				},
+				{
+					"in": "body",
+					"name": "formation",
+					"description": "Identifiant de la formation concernée par le cours",
+					"schema": {
+						"type": "integer"
+					},
+					"required": true
+				},
+				{
+					"in": "body",
+					"name": "classeType",
+					"description": "Identifiant du type de cours",
+					"schema": {
+						"type": "integer"
+					},
+					"required": true
+				}],
+				"summary": "Rajouter un cours",
+				"responses": {
+					"200": {
+						"description": "Message d'inscription valide"
+					},
+					"400": {
+						"description": "Requête ne comportant pas les bons paramètres"
+					},
+					"500": {
+						"description": "Erreur de connexion à la base de données"
+					}
+				}
+			}
+		},
+		"/classe/{id}": {
+			"get": {
+				"tags": [
+					"Cours"
+				],
+				"summary": "Détails d'un cours",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"schema": {
+						"type": "integer"
+					},
+					"required": true,
+					"description": "identifiant du cours"
+				}],
+				"responses": {
+					"200": {
+						"description": "Détails d'un cours",
+						"schema": {
+							"$ref": "#/definitions/Classe"
+						}
+					},
+					"500": {
+						"description": "Erreur de connexion à la base de données"
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Cours"
+				],
+				"summary": "Supprimer un cours",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"schema": {
+						"type": "integer"
+					},
+					"required": true,
+					"description": "identifiant du cours"
+				}],
+				"responses": {
+					"200": {
+						"description": "Message de confirmation de la suppression"
+					},
+					"500": {
+						"description": "Erreur de connexion à la base de données"
+					}
+				}
+			}
+		},
+		"/user": {
+			"get": {
+				"tags": [
+					"Utilisateur"
+				],
+				"summary": "Liste tous les utilisateurs présents en base de données",
+				"responses": {
+					"200": {
+						"description": "Liste des utilisateurs"
+					},
+					"500": {
+						"description": "Erreur de connexion à la base de données"
+					}
+				}
+			}
+		},
+		"/user/{id}": {
+			"get": {
+				"tags": [
+					"Utilisateur"
+				],
+				"summary": "Détails d'un utilisateur",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"schema": {
+						"type": "integer"
+					},
+					"required": true,
+					"description": "identifiant de l'utilisateur"
+				}],
+				"responses": {
+					"200": {
+						"description": "Détails de l'utilisateur",
+						"schema": {
+							"$ref": "#/definitions/User"
+						}
+					},
+					"500": {
+						"description": "Erreur de connexion à la base de données"
+					}
+				}
+			}
+		},
+		"/student": {
+			"get": {
+				"tags": [
+					"Etudiant"
+				],
+				"summary": "Liste tous les étudiants présents en base de données",
+				"responses": {
+					"200": {
+						"description": "Liste des étudiants"
+					},
+					"500": {
+						"description": "Erreur de connexion à la base de données"
+					}
+				}
+			}
+		},
+		"/student/{id}": {
+			"get": {
+				"tags": [
+					"Etudiant"
+				],
+				"summary": "Détails d'un étudiant",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"schema": {
+						"type": "integer"
+					},
+					"required": true,
+					"description": "identifiant de l'étudiant"
+				}],
+				"responses": {
+					"200": {
+						"description": "Détails de l'étudiant",
+						"schema": {
+							"$ref": "#/definitions/Student"
+						}
+					},
+					"500": {
+						"description": "Erreur de connexion à la base de données"
+					}
+				}
+			}
 		}
 	},					
 	"tags": [
@@ -159,6 +385,18 @@
 		{
 			"name": "Type de cours",
 			"description": "Opérations sur les types d'un cours"
+		},
+		{
+			"name": "Cours",
+			"description": "C.R.U.D. sur les cours"
+		},
+		{
+			"name": "Utilisateur",
+			"description": "Opérations sur les utilisateurs"
+		},
+		{
+			"name": "Etudiant",
+			"description": "Opérations sur les étudiants"
 		}
 	],
 	"definitions": {
@@ -183,6 +421,72 @@
 				},
 				"name": {
 					"type": "string"
+				}
+			}
+		},
+		"Classe": {
+			"required": [
+				"title",
+				"created_by",
+				"happen_at",
+				"duration",
+				"formation_id",
+				"classe_type_id",
+				"id"
+			],
+			"properties": {
+				"id": {
+					"type": "integer"
+				},
+				"title": {
+					"type": "string"
+				},
+				"created_by": {
+					"type": "integer"
+				},
+				"happen_at": {
+					"type": "datetime"
+				},
+				"duration": {
+					"type": "integer"
+				},
+				"formation_id": {
+					"type": "integer"
+				},
+				"classe_type_id": {
+					"type": "integer"
+				}
+			}
+		},
+		"User": {
+			"properties": {
+				"id": {
+					"type": "integer"
+				},
+				"first_name": {
+					"type": "string"
+				},
+				"last_name": {
+					"type": "string"
+				},
+				"email": {
+					"type": "string"
+				}
+			}
+		},
+		"Student": {
+			"properties": {
+				"id": {
+					"type": "integer"
+				},
+				"first_name": {
+					"type": "string"
+				},
+				"last_name": {
+					"type": "string"
+				},
+				"formation_id": {
+					"type": "integer"
 				}
 			}
 		}
