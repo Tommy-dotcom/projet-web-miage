@@ -18,5 +18,10 @@ export class MainHeader {
         console.log(data);
       });
   }
+
+  addClass() {
+  }
+
+
 }
 
