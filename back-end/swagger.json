@@ -237,7 +237,7 @@
 				}
 			}
 		},
-		"/classe/{idformulaire}" : {
+		"/classe/formation/{id}" : {
 			"get": {
 				"tags": ["Cours"],
 				"summary": "Liste de tous les cours d'une formation",
