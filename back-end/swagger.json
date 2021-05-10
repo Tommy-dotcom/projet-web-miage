@@ -237,6 +237,32 @@
 				}
 			}
 		},
+		"/classe/{idformulaire}" : {
+			"get": {
+				"tags": ["Cours"],
+				"summary": "Liste de tous les cours d'une formation",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"schema": {
+						"type": "integer"
+					},
+					"required": true,
+					"description": "identifiant de la formation"
+				}],
+				"responses": {
+					"200": {
+						"description": "Liste de tous les cours d'une formation",
+						"schema": {
+							"$ref": "#/definitions/Classe"
+						}
+					},
+					"500": {
+						"description": "Erreur de connexion à la base de données"
+					}
+				}
+			}
+		},
 		"/classe/{id}": {
 			"get": {
 				"tags": [
