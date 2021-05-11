@@ -1,8 +1,23 @@
-.custom-modal {
+/*.custom-modal {
   position: fixed;
   width: 600px;
-  z-index: 9999!important;
-  background: #fff;
+  z-index: 9999 !important;
+  background: #fff!important;
   top: 50px;
   left: calc(50vw - 300px);
-}
+
+  .custom-modal-body, .custom-modal-footer {
+    background: #fff;
+  }
+
+  &:before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.5);
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+  }
+}*/

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-box-overlay',
@@ -7,8 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoxOverlayComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<BoxOverlayComponent>) { }
 
   ngOnInit(): void {
+  }
+
+  cancel(): void {
+    this.dialogRef.close();
+  }
+
+  close(): void {
+    this.dialogRef.close();
+  }
+
+  add(): void{
   }
 }

@@ -1,27 +1,40 @@
 import { Component } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
+import {MatDialog} from '@angular/material/dialog';
+import {BoxOverlayComponent} from '../box-overlay/box-overlay.component';
 
 @Component({
-  selector: 'main-header',
+  selector: 'app-main-header',
   templateUrl: './header.html',
   styleUrls: ['./header.scss']
 })
-export class MainHeader {
+export class MainHeaderComponent {
   title = 'Header';
   baseUrl = 'http://localhost:8000';
+  formationsArray = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public dialog: MatDialog) {
+    this.fetchAllFormations();
+  }
 
-  getData() {
-    this.http.get<any[]>(this.baseUrl + "/formation")
+  fetchAllFormations(): void{
+    this.http.get<any>(this.baseUrl + '/formation')
       .subscribe(data => {
-        console.log(data);
+        this.formationsArray = data.data;
       });
   }
 
-  addClass() {
+  // tslint:disable-next-line:typedef
+  getFormationsList() {
+    return this.formationsArray;
   }
 
+  fetchClasses(value): void {
 
+  }
+
+  addClass(): void {
+      this.dialog.open(BoxOverlayComponent);
+  }
 }
 

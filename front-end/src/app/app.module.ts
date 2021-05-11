@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainHeader } from "./header/header.component";
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from '@angular/common/http';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { BoxOverlayComponent } from './box-overlay/box-overlay.component';
+import {MainHeaderComponent} from './header/header.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   exports: [
@@ -14,13 +16,15 @@ import { BoxOverlayComponent } from './box-overlay/box-overlay.component';
   ],
   declarations: [
     AppComponent,
-    MainHeader,
-    BoxOverlayComponent
+    BoxOverlayComponent,
+    MainHeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
 })
