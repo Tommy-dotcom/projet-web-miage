@@ -65,6 +65,23 @@ router.post('/', function(req, res) {
 	}
 });
 
+// GET REQUEST
+router.get('/formation/:id', function(req, res){
+	try{
+		sequelize.authenticate();
+		sequelize.query("SELECT classe.id, classe.title, classe.happen_at, classe.duration, user.first_name as creatorFirstName, user.last_name as creatorLastName, user.email as creatorEmail, classe_type.name as classeType, formation.name as formationName FROM user, formation, classe_type, classe WHERE user.id = classe.created_by AND classe.formation_id = formation.id AND classe.classe_type_id = classe_type.id AND formation.id = " + req.params.id).then(([results, metadata]) => {
+			res.json({
+				data: results,
+			});
+		})
+	} catch (error){
+		res.json({
+			status : 500,
+			message: 'Cant\'t connect to database'
+		})
+	}
+});
+
 // GET SIMPLE REQUEST
 router.get('/:id', function(req, res) {
 	try {

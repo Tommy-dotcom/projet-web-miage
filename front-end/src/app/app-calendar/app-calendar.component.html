@@ -1,0 +1,17 @@
+<div class="blankslate mt-5 no-selected" *ngIf="! getCalendarService().currentSelection">
+  <i class="ion ion-ios-alert huge-icon color-text-danger"></i>
+  <h3 class="mb-1">Aucune formation sélectionnée</h3>
+  <p>Sélectionnez une formation pour en afficher l'emploi du temps</p>
+</div>
+
+<div class="calendar mt-5" *ngIf="getCalendarService().currentSelection">
+    <div class="TimelineItem" *ngFor="let classe of getCalendarService().currentClasses">
+        <div class="TimelineItem-badge" [ngStyle]="{background: getBackgroundForClassType(classe.classeType)}">
+            <i class="ion ion-ios-briefcase color-text-white"></i>
+        </div>
+        <div class="TimelineItem-body">
+            <strong>{{ classe.title }}</strong>
+            - durée : {{ classe.duration }}h, avec {{ classe.creatorFirstName }} {{ classe.creatorLastName }}
+        </div>
+    </div>
+</div>
