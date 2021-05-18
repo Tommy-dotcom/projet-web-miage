@@ -1,23 +1,21 @@
-/*.custom-modal {
-  position: fixed;
-  width: 600px;
-  z-index: 9999 !important;
-  background: #fff!important;
-  top: 50px;
-  left: calc(50vw - 300px);
+.modal-header {
+  text-align: center;
+}
 
-  .custom-modal-body, .custom-modal-footer {
-    background: #fff;
-  }
+.modal-body, .modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  &:before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: rgba(0,0,0,.5);
-    z-index: -1;
-    width: 100vw;
-    height: 100vh;
-  }
-}*/
+#submit {
+  margin-right: 15px;
+}
+
+#cancel {
+  margin-left: 15px;
+}
+
+#hours {
+  box-shadow: none;
+}

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { RegistrationService} from '../registration.service';
+import {DateAdapter} from '@angular/material/core';
 
 @Component({
   selector: 'app-box-overlay',
@@ -7,20 +10,38 @@ import {MatDialogRef} from '@angular/material/dialog';
   styleUrls: ['./box-overlay.component.scss']
 })
 export class BoxOverlayComponent implements OnInit {
+  form: FormGroup;
 
-  constructor(public dialogRef: MatDialogRef<BoxOverlayComponent>) { }
-
-  ngOnInit(): void {
+  constructor(public dialogRef: MatDialogRef<BoxOverlayComponent>, private fb: FormBuilder, private dateAdapter: DateAdapter<Date>, private registrationService: RegistrationService) {
+    this.dateAdapter.setLocale('en-GB');
   }
 
-  cancel(): void {
-    this.dialogRef.close();
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      date: ['', [Validators.required]],
+      hours: ['', Validators.required],
+      formation: ['', Validators.required],
+      duration: ['', Validators.required],
+      nameClass: ['', Validators.required],
+      typeOfClass: ['', Validators.required],
+      nameTeacher: ['', Validators.required],
+      modality: ['', Validators.required],
+    });
   }
 
   close(): void {
     this.dialogRef.close();
   }
 
-  add(): void{
+  submit(): void {
+    this.dialogRef.close(this.form.value);
+    this.registrationService.register(this.form.value)
+      .subscribe(
+        response => console.log('Success!', response),
+        error => console.error('Error', error)
+      );
+    /*console.log('Données du formulaire', this.form.value);
+    console.log('Champs date', this.form.get('date').value);*/
   }
+
 }

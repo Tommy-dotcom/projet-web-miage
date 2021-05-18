@@ -34,7 +34,7 @@ export class MainHeaderComponent {
   }
 
   addClass(): void {
-      this.dialog.open(BoxOverlayComponent);
+      this.dialog.open(BoxOverlayComponent, {width: '500px'});
   }
 }
 
