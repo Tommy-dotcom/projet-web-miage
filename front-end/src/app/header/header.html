@@ -8,6 +8,6 @@
             <option value="">Sélectionner une formation</option>
             <option *ngFor="let opt of getFormationsList()" [value]="opt.id">{{ opt.name }}</option>
         </select>
-        <button class="btn btn-primary">Ajouter un cours</button>
+        <button mat-button class="btn btn-primary" (click)="addClass()">Ajouter un cours</button>
     </div>
 </header>

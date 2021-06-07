@@ -1,23 +1,25 @@
 import { Component } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
+import {MatDialog} from '@angular/material/dialog';
+import {BoxOverlayComponent} from '../box-overlay/box-overlay.component';
 import { CalendarService } from "../services/calendar.service";
 
 @Component({
-  selector: 'main-header',
+  selector: 'app-main-header',
   templateUrl: './header.html',
   styleUrls: ['./header.scss']
 })
-export class MainHeader {
+export class MainHeaderComponent {
   title = 'Header';
+  baseUrl = 'http://localhost:8000';
   formationsArray = [];
 
-  constructor(private http: HttpClient,
-              private calendarService: CalendarService) {
+  constructor(private http: HttpClient, public dialog: MatDialog, private calendarService: CalendarService) {
     this.fetchAllFormations();
   }
 
-  fetchAllFormations() {
-    this.http.get<any>(this.calendarService.baseUrl + "/formation")
+  fetchAllFormations(): void{
+    this.http.get<any>(this.baseUrl + '/formation')
       .subscribe(data => {
         this.formationsArray = data.data;
       });
@@ -25,6 +27,10 @@ export class MainHeader {
 
   getFormationsList() {
     return this.formationsArray;
+  }
+
+  addClass(): void {
+      this.dialog.open(BoxOverlayComponent, {width: '500px'});
   }
 
   fetchClasses(value) {
