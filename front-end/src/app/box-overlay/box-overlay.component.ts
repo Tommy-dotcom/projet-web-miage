@@ -3,6 +3,7 @@ import {MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { RegistrationService} from '../registration.service';
 import {DateAdapter} from '@angular/material/core';
+import {DatabaseService} from '../database.service';
 
 @Component({
   selector: 'app-box-overlay',
@@ -12,8 +13,12 @@ import {DateAdapter} from '@angular/material/core';
 export class BoxOverlayComponent implements OnInit {
   form: FormGroup;
 
-  constructor(public dialogRef: MatDialogRef<BoxOverlayComponent>, private fb: FormBuilder, private dateAdapter: DateAdapter<Date>, private registrationService: RegistrationService) {
+  constructor(public dialogRef: MatDialogRef<BoxOverlayComponent>, private fb: FormBuilder, private dateAdapter: DateAdapter<Date>, private registrationService: RegistrationService, public dataBaseService: DatabaseService) {
     this.dateAdapter.setLocale('en-GB');
+    dataBaseService.fetchAllFormations();
+    dataBaseService.fetchAllNameClass();
+    dataBaseService.fetchAllTypeOfClass();
+    dataBaseService.fetchAllNameTeacher();
   }
 
   ngOnInit(): void {
