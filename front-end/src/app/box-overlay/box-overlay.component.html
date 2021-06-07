@@ -35,24 +35,15 @@
       </div>
       <div class="row">
         <mat-form-field appearance="">
-          <mat-label>Choisir l'enseignement</mat-label>
-          <select matNativeControl formControlName="nameClass">
-            <option value=""></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
+          <mat-label>Nom du cours</mat-label>
+          <input matInput type="text" placeholder="Titre du cours" formControlName="nameClass">
         </mat-form-field>
       </div>
       <div class="row">
         <mat-form-field appearance="">
           <mat-label>Choisir un type de classe</mat-label>
           <select matNativeControl formControlName="typeOfClass">
-            <option value=""></option>
-            <option value="TD">TD</option>
-            <option value="TP">TP</option>
-            <option value="COURS">COURS</option>
-            <option value="EXAMEN">EXAMEN</option>
+            <option *ngFor="let opt of dataBaseService.typeOfClassArray" [value]="opt.id">{{ opt.name }}</option>
           </select>
         </mat-form-field>
       </div>
@@ -60,7 +51,7 @@
         <mat-form-field appearance="">
           <mat-label>Choisir un enseignant</mat-label>
           <select matNativeControl formControlName="nameTeacher">
-            <option value=""></option>
+            <option *ngFor="let opt of dataBaseService.nameTeacherArray" [value]="opt.id">{{ opt.first_name }} {{ opt.last_name }}</option>
           </select>
         </mat-form-field>
       </div>
@@ -68,17 +59,14 @@
         <mat-form-field appearance="">
           <mat-label>Choisir une modalité</mat-label>
           <select matNativeControl formControlName="modality">
-            <option value=""></option>
-            <option value="Presence">Presence</option>
-            <option value="Distanciel">Distanciel</option>
-            <option value="Hybride">Hybride</option>
+            <option *ngFor="let opt of dataBaseService.modalityArray" [value]="opt.id">{{ opt.name }}</option>
           </select>
         </mat-form-field>
       </div>
       <div class="modal-footer">
         <mat-dialog-actions>
           <div class="row">
-            <button mat-button class="btn btn-primary" id="submit" [disabled]="!form.valid">Ajouter</button>
+            <button mat-button class="btn btn-primary" id="submit" (click)="submit()">Ajouter</button>
             <button mat-button class="btn btn-dark" id="cancel" (click)="close()">Annuler</button>
           </div>
         </mat-dialog-actions>

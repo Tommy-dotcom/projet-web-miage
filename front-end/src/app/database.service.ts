@@ -35,7 +35,7 @@ export class DatabaseService {
   }
 
   fetchAllTypeOfClass(): void{
-    this.http.get<any>(this.baseUrl + '/classe_type')
+    this.http.get<any>(this.baseUrl + '/class_type')
       .subscribe(data => {
         this.typeOfClassArray = data.data;
       });
@@ -45,6 +45,14 @@ export class DatabaseService {
     this.http.get<any>(this.baseUrl + '/user')
       .subscribe(data => {
         this.nameTeacherArray = data.data;
+      });
+  }
+
+  fetchModality(): void
+  {
+    this.http.get<any>(this.baseUrl + '/modality')
+      .subscribe(data => {
+        this.modalityArray = data.data;
       });
   }
 }

@@ -33,6 +33,7 @@ export class BoxOverlayComponent implements OnInit {
     this.dataBaseService.fetchAllNameClass();
     this.dataBaseService.fetchAllTypeOfClass();
     this.dataBaseService.fetchAllNameTeacher();
+    this.dataBaseService.fetchModality();
   }
 
   close(): void {
@@ -46,8 +47,6 @@ export class BoxOverlayComponent implements OnInit {
         response => console.log('Success!', response),
         error => console.error('Error', error)
       );
-    /*console.log('Données du formulaire', this.form.value);
-    console.log('Champs date', this.form.get('date').value);*/
   }
 
 }
