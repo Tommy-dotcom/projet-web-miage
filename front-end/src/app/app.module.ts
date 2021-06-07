@@ -14,13 +14,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
 import {DatetimePickerModule} from '@sq-ui/ng-datetime-picker';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
-
+import { FormsModule } from "@angular/forms";
+import { AppCalendarComponent } from './app-calendar/app-calendar.component';
+import { CalendarService } from "./services/calendar.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     BoxOverlayComponent,
-    MainHeaderComponent
+    MainHeaderComponent,
+    AppCalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,11 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     MatOptionModule,
     DatetimePickerModule,
     NgxMaterialTimepickerModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
+  ],
+  providers: [
+    CalendarService
   ],
   bootstrap: [AppComponent]
 })
