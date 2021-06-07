@@ -46,6 +46,7 @@ app.use("/class_type", require("./routes/type"));
 app.use("/classe", require('./routes/classe'));
 app.use("/user", require('./routes/user'));
 app.use("/student", require('./routes/student'));
+app.use("/modality", require('./routes/modality'));
 
 const PORT = process.env.PORT || 8000;
 
