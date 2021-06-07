@@ -7,11 +7,11 @@ import {HttpClient} from '@angular/common/http';
 export class DatabaseService {
   title = 'Header';
   baseUrl = 'http://localhost:8000';
-  formationsArray = [];
-  nameClassArray = [];
-  typeOfClassArray = [];
-  nameTeacherArray = [];
-  modalityArray = [];
+  public formationsArray = [];
+  public nameClassArray = [];
+  public typeOfClassArray = [];
+  public nameTeacherArray = [];
+  public modalityArray = [];
 
   constructor(private http: HttpClient) {
     this.fetchAllFormations();
@@ -24,7 +24,6 @@ export class DatabaseService {
     this.http.get<any>(this.baseUrl + '/formation')
       .subscribe(data => {
         this.formationsArray = data.data;
-        console.log(data.data);
       });
   }
 

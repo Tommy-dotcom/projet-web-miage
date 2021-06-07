@@ -15,10 +15,6 @@ export class BoxOverlayComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<BoxOverlayComponent>, private fb: FormBuilder, private dateAdapter: DateAdapter<Date>, private registrationService: RegistrationService, public dataBaseService: DatabaseService) {
     this.dateAdapter.setLocale('en-GB');
-    dataBaseService.fetchAllFormations();
-    dataBaseService.fetchAllNameClass();
-    dataBaseService.fetchAllTypeOfClass();
-    dataBaseService.fetchAllNameTeacher();
   }
 
   ngOnInit(): void {
@@ -32,6 +28,11 @@ export class BoxOverlayComponent implements OnInit {
       nameTeacher: ['', Validators.required],
       modality: ['', Validators.required],
     });
+
+    this.dataBaseService.fetchAllFormations();
+    this.dataBaseService.fetchAllNameClass();
+    this.dataBaseService.fetchAllTypeOfClass();
+    this.dataBaseService.fetchAllNameTeacher();
   }
 
   close(): void {

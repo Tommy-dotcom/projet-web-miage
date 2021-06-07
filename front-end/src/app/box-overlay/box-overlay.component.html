@@ -24,7 +24,7 @@
         <mat-form-field appearance="">
           <mat-label>Choisir la formation</mat-label>
           <select matNativeControl formControlName="formation">
-            <option *ngFor="let opt of dataBaseService.fetchAllFormations()" [value]="opt.id">{{ opt.name }}</option>
+            <option *ngFor="let opt of dataBaseService.formationsArray" [value]="opt.id">{{ opt.name }}</option>
           </select>
         </mat-form-field>
       </div>
