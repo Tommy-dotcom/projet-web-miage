@@ -1,0 +1,13 @@
+<header>
+    <div class="left-header">
+        <h1 class="color-text-primary">Calendrier Universitaire</h1>
+        <p class="subtitle text-uppercase color-text-tertiary">Gérer facilement votre emploi du temps</p>
+    </div>
+    <div class="right-header">
+        <select name="formation" id="formationSelect" class="form-select" (change)="fetchClasses($event.target.value)">
+            <option value="">Sélectionner une formation</option>
+            <option *ngFor="let opt of getFormationsList()" [value]="opt.id">{{ opt.name }}</option>
+        </select>
+        <button mat-button class="btn btn-primary" (click)="addClass()">Ajouter un cours</button>
+    </div>
+</header>

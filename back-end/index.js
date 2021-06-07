@@ -32,12 +32,21 @@ app.use(
 );
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use((req, res, next) => {
+    // STFU Cors Policy
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
 
 app.use("/formation", require("./routes/formation"));
 app.use("/class_type", require("./routes/type"));
 app.use("/classe", require('./routes/classe'));
 app.use("/user", require('./routes/user'));
 app.use("/student", require('./routes/student'));
+app.use("/modality", require('./routes/modality'));
 
 const PORT = process.env.PORT || 8000;
 

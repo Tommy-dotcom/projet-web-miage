@@ -1,0 +1,23 @@
+header {
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .right-header {
+        select {
+          margin-right: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 1100px) {
+  header {
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    .right-header {
+      margin-top: 10px;
+    }
+  }
+}
