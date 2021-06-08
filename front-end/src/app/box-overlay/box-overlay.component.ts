@@ -30,9 +30,9 @@ export class BoxOverlayComponent implements OnInit {
     });
 
     this.dataBaseService.fetchAllFormations();
-    this.dataBaseService.fetchAllNameClass();
     this.dataBaseService.fetchAllTypeOfClass();
     this.dataBaseService.fetchAllNameTeacher();
+    this.dataBaseService.fetchAllModality();
   }
 
   close(): void {

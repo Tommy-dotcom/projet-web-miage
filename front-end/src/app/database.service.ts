@@ -7,17 +7,17 @@ import {HttpClient} from '@angular/common/http';
 export class DatabaseService {
   title = 'Header';
   baseUrl = 'http://localhost:8000';
+
   public formationsArray = [];
-  public nameClassArray = [];
   public typeOfClassArray = [];
   public nameTeacherArray = [];
   public modalityArray = [];
 
   constructor(private http: HttpClient) {
     this.fetchAllFormations();
-    this.fetchAllNameClass();
     this.fetchAllTypeOfClass();
     this.fetchAllNameTeacher();
+    this.fetchAllModality();
   }
 
   fetchAllFormations(): void{
@@ -27,15 +27,8 @@ export class DatabaseService {
       });
   }
 
-  fetchAllNameClass(): void{
-    this.http.get<any>(this.baseUrl + '/classe')
-      .subscribe(data => {
-      this.nameClassArray = data.data;
-    });
-  }
-
   fetchAllTypeOfClass(): void{
-    this.http.get<any>(this.baseUrl + '/classe_type')
+    this.http.get<any>(this.baseUrl + '/class_type')
       .subscribe(data => {
         this.typeOfClassArray = data.data;
       });
@@ -45,6 +38,13 @@ export class DatabaseService {
     this.http.get<any>(this.baseUrl + '/user')
       .subscribe(data => {
         this.nameTeacherArray = data.data;
+      });
+  }
+
+  fetchAllModality(): void{
+    this.http.get<any>(this.baseUrl + '/modality')
+      .subscribe(data => {
+        this.modalityArray = data.data;
       });
   }
 }
