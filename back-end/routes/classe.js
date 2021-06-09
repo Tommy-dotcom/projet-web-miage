@@ -38,7 +38,7 @@ router.post('/', function(req, res) {
 	const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
 	// vérification que tous les objets sont bien présents dans la requête
-	if (!equals(Object.keys(req.body).sort(), ['classeType', 'createdBy', 'duration', 'formation', 'happenAt', 'title'])) {
+	if (!equals(Object.keys(req.body).sort(), ['classeType', 'createdBy', 'duration', 'formation', 'happenAt', 'modality', 'title'])) {
     	res.json({
     		status: 400,
     		message: 'Bad request'
@@ -51,7 +51,7 @@ router.post('/', function(req, res) {
 		const date = new Date(Date.parse(req.body.happenAt));
 
 		sequelize.authenticate();
-	   	sequelize.query(`INSERT INTO classe(title, happen_at, duration, created_by, classe_type_id, formation_id) VALUES('${req.body.title} ', '${date.toISOString().slice(0, 19).replace('T', ' ')}', ${req.body.duration}, ${req.body.createdBy}, ${req.body.classeType}, ${req.body.formation})`).then(([results, metadata]) => {
+	   	sequelize.query(`INSERT INTO classe(title, happen_at, duration, created_by, classe_type_id, formation_id, modality_id) VALUES('${req.body.title} ', '${date.toISOString().slice(0, 19).replace('T', ' ')}', ${req.body.duration}, ${req.body.createdBy}, ${req.body.classeType}, ${req.body.formation}, ${req.body.modality})`).then(([results, metadata]) => {
 	    	res.json({
 	    		status: 200,
 	    		message: 'Successfully written'
@@ -69,7 +69,7 @@ router.post('/', function(req, res) {
 router.get('/formation/:id', function(req, res){
 	try{
 		sequelize.authenticate();
-		sequelize.query("SELECT classe.id, classe.title, classe.happen_at, classe.duration, user.first_name as creatorFirstName, user.last_name as creatorLastName, user.email as creatorEmail, classe_type.name as classeType, formation.name as formationName FROM user, formation, classe_type, classe WHERE user.id = classe.created_by AND classe.formation_id = formation.id AND classe.classe_type_id = classe_type.id AND formation.id = " + req.params.id).then(([results, metadata]) => {
+		sequelize.query("SELECT DISTINCT classe.id, classe.title, classe.happen_at, classe.duration, user.first_name as creatorFirstName, user.last_name as creatorLastName, user.email as creatorEmail, classe_type.name as classeType, formation.name as formationName, modality.name as modalityName FROM user, formation, classe_type, modality, classe WHERE modality.id = classe.modality_id AND user.id = classe.created_by AND classe.formation_id = formation.id AND classe.classe_type_id = classe_type.id AND formation.id = " + req.params.id + " ORDER BY classe.happen_at").then(([results, metadata]) => {
 			res.json({
 				data: results,
 			});

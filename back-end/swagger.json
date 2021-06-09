@@ -216,6 +216,15 @@
 				},
 				{
 					"in": "body",
+					"name": "modality",
+					"description": "Modalité du cours (présentiel, distanciel, hybride)",
+					"schema": {
+						"type": "integer"
+					},
+					"required": true
+				},
+				{
+					"in": "body",
 					"name": "classeType",
 					"description": "Identifiant du type de cours",
 					"schema": {
@@ -323,6 +332,22 @@
 				"responses": {
 					"200": {
 						"description": "Liste des utilisateurs"
+					},
+					"500": {
+						"description": "Erreur de connexion à la base de données"
+					}
+				}
+			}
+		},
+		"/teacher": {
+			"get": {
+				"tags": [
+					"Utilisateur"
+				],
+				"summary": "Liste tous les enseignants présents en base de données",
+				"responses": {
+					"200": {
+						"description": "Liste des enseignants"
 					},
 					"500": {
 						"description": "Erreur de connexion à la base de données"
@@ -458,7 +483,8 @@
 				"duration",
 				"formation_id",
 				"classe_type_id",
-				"id"
+				"id",
+				"modality_id"
 			],
 			"properties": {
 				"id": {
@@ -477,6 +503,9 @@
 					"type": "integer"
 				},
 				"formation_id": {
+					"type": "integer"
+				},
+				"modality_id": {
 					"type": "integer"
 				},
 				"classe_type_id": {
@@ -513,6 +542,9 @@
 				},
 				"formation_id": {
 					"type": "integer"
+				},
+				"email": {
+					"type": "string"
 				}
 			}
 		}

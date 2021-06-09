@@ -42,7 +42,7 @@ export class DatabaseService {
   }
 
   fetchAllNameTeacher(): void{
-    this.http.get<any>(this.baseUrl + '/user')
+    this.http.get<any>(this.baseUrl + '/teacher')
       .subscribe(data => {
         this.nameTeacherArray = data.data;
       });

@@ -17,13 +17,17 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { FormsModule } from "@angular/forms";
 import { AppCalendarComponent } from './app-calendar/app-calendar.component';
 import { CalendarService } from "./services/calendar.service";
+import {DatePipe} from '@angular/common';
+import { AppSecurityComponent } from './app-security/app-security.component';
+import {SecurityService} from "./services/security.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     BoxOverlayComponent,
     MainHeaderComponent,
-    AppCalendarComponent
+    AppCalendarComponent,
+    AppSecurityComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,9 @@ import { CalendarService } from "./services/calendar.service";
     FormsModule
   ],
   providers: [
-    CalendarService
+    CalendarService,
+      DatePipe,
+      SecurityService
   ],
   bootstrap: [AppComponent]
 })

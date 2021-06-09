@@ -5,13 +5,16 @@
 </div>
 
 <div class="calendar mt-5" *ngIf="getCalendarService().currentSelection">
-    <div class="TimelineItem" *ngFor="let classe of getCalendarService().currentClasses">
-        <div class="TimelineItem-badge" [ngStyle]="{background: getBackgroundForClassType(classe.classeType)}">
-            <i class="ion ion-ios-briefcase color-text-white"></i>
-        </div>
-        <div class="TimelineItem-body">
-            <strong>{{ classe.title }}</strong>
-            - durée : {{ classe.duration }}h, avec {{ classe.creatorFirstName }} {{ classe.creatorLastName }}
+    <div class="container" *ngFor="let classe of getCalendarService().currentClasses">
+        <div class="TimelineItem" *ngIf="classeDoesntHappenyet(classe.happen_at|date:'yyyyMMdd')">
+            <div class="TimelineItem-badge" [ngStyle]="{background: getBackgroundForClassType(classe.classeType)}">
+                <i class="ion ion-ios-briefcase color-text-white"></i>
+            </div>
+            <div class="TimelineItem-body" >
+                <strong>{{ classe.title }}</strong>
+                - durée : {{ classe.duration }}h le {{ classe.happen_at|date:'dd/MM/yyyy' }} à {{ classe.happen_at|date:'HH:mm' }},
+                avec {{ classe.creatorFirstName }} {{ classe.creatorLastName }}, modalité : {{ classe.modalityName }}
+            </div>
         </div>
     </div>
 </div>

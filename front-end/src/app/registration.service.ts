@@ -17,7 +17,8 @@ export class RegistrationService {
       .set('duration', userData.duration)
       .set('createdBy', userData.nameTeacher)
       .set('classeType', userData.typeOfClass)
-      .set('formation', userData.modality);
+      .set('formation', userData.formation)
+      .set('modality', userData.modality);
 
     return this.http.post<any>(this.url, body.toString(), {
       headers: new HttpHeaders()

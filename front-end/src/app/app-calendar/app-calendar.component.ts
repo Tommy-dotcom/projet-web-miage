@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {CalendarService} from "../services/calendar.service";
 import {HttpClient} from "@angular/common/http";
+import {DatePipe} from "@angular/common";
+import {SecurityService} from "../services/security.service";
 
 @Component({
   selector: 'app-calendar',
@@ -8,8 +10,11 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./app-calendar.component.scss']
 })
 export class AppCalendarComponent implements OnInit {
+
     constructor(private http: HttpClient,
-        private calendarService: CalendarService) {
+        private calendarService: CalendarService,
+        private datePipe: DatePipe,
+        private security: SecurityService) {
     }
 
     ngOnInit(): void {
@@ -37,5 +42,17 @@ export class AppCalendarComponent implements OnInit {
             default:
                 return "#bdc3c7";
         }
+    }
+
+    classeDoesntHappenyet(datetime) {
+        if (this.isGranted()) {
+            return true;
+        }
+
+        return parseInt(datetime) >= parseInt(this.datePipe.transform(new Date(), 'yyyyMMdd'));
+    }
+
+    isGranted() {
+        return !this.security.isStudent;
     }
 }

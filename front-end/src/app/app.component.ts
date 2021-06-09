@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {SecurityService} from "./services/security.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     title = 'front-end';
+
+    constructor(public security: SecurityService) {
+    }
+
+    isLogged() {
+        return this.security.isLogged;
+    }
+
+    disconnect() {
+        this.security.disconnect();
+    }
+
+    getLoginInfo() {
+        return this.security.loggedName;
+    }
 }
