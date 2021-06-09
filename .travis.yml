@@ -1,0 +1,15 @@
+language: node_js
+
+git:
+  depth: 3
+  quiet: true
+
+before_install: 
+  - sudo apt-get update
+  # installing Angular 
+  - npm install -g @angular/cli
+
+script:
+  # While we don't have any script to test
+  - cd back-end
+  - npm install

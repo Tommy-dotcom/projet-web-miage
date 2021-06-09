@@ -1,0 +1,11 @@
+<main class="general-container">
+    <div *ngIf="isLogged()">
+        <div class="absolute-disconnect">
+            <p>Connecté en tant que : {{ getLoginInfo() }} <button class="btn btn-danger" (click)="disconnect()">Me déconnecter</button></p>
+        </div>
+
+        <app-main-header></app-main-header>
+        <app-calendar></app-calendar>
+    </div>
+    <app-security *ngIf="!isLogged()"></app-security>
+</main>

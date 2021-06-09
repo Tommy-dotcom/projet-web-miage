@@ -1,0 +1,21 @@
+.modal-header {
+  text-align: center;
+}
+
+.modal-body, .modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#submit {
+  margin-right: 15px;
+}
+
+#cancel {
+  margin-left: 15px;
+}
+
+#hours {
+  box-shadow: none;
+}

@@ -1,0 +1,20 @@
+<div class="text-center">
+    <h1>Connexion au calendrier</h1>
+    <p class="subtitle text-uppercase color-text-tertiary">Merci de vous connecter pour continuer</p>
+
+    <div class="mt-5 mb-5 color-bg-danger-inverse color-text-white custom-error" *ngIf="isOnError()">
+        {{ getErrorMessage() }}
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="mt-5">
+        <div class="form-group">
+            <div class="form-group-body">
+                <input type="email" class="form-control" placeholder="Email de connexion" id="email" formControlName="email">
+            </div>
+        </div>
+
+        <div class="row">
+            <button class="btn btn-primary" id="submit" (click)="submit()">Connexion</button>
+        </div>
+    </form>
+</div>
