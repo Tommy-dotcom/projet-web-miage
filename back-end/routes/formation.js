@@ -20,7 +20,7 @@ const sequelize = new Sequelize(credentials.database, credentials.user, credenti
 router.get("/", function (req, res) {
 	try {
 		sequelize.authenticate();
-	   	sequelize.query("SELECT * FROM formation").then(([results, metadata]) => {
+	   	sequelize.query("SELECT formation.id as id, formation.name as name, COUNT(student.id) as NbStudents FROM formation LEFT JOIN student ON formation.id = student.formation_id GROUP BY formation.id, formation.name").then(([results, metadata]) => {
 	    	res.json({
 	    		data: results,
 	    	});

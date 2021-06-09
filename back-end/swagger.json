@@ -355,6 +355,31 @@
 				}
 			}
 		},
+		"/connect": {
+			"get": {
+				"tags": [
+					"Utilisateur"
+				],
+				"summary": "Connexion d'un utilisateur ou d'un étudiant à l'application",
+				"parameters": [{
+					"in": "path",
+					"name": "email",
+					"schema": {
+						"type": "string"
+					},
+					"required": true,
+					"description": "email de la personne se connectant"
+				}],
+				"responses": {
+					"200": {
+						"description": "Les éventuelles erreurs, le statut de la personne connectée et ses informations complémentaires"
+					},
+					"500": {
+						"description": "Erreur de connexion à la base de données"
+					}
+				}
+			}
+		},
 		"/user/{id}": {
 			"get": {
 				"tags": [

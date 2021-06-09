@@ -4,8 +4,17 @@
   <p>Sélectionnez une formation pour en afficher l'emploi du temps</p>
 </div>
 
-<div class="calendar mt-5" *ngIf="getCalendarService().currentSelection">
-    <div class="container" *ngFor="let classe of getCalendarService().currentClasses">
+<div class="calendar" *ngIf="getCalendarService().currentSelection">
+    <div class="filters d-table table-fixed width-full mt-3 mb-5">
+        <div class="d-table-cell col-3">
+            FILTRER LES COURS PAR :
+        </div>
+        <div class="d-table-cell col-9">
+            <input type="text" class="form-control input-block" placeholder="Nom du cours, date, professeur ou modalité" [(ngModel)]="textFilter">
+        </div>
+    </div>
+
+    <div class="container" *ngFor="let classe of getCalendarService().currentClasses | filter : textFilter">
         <div class="TimelineItem" *ngIf="classeDoesntHappenyet(classe.happen_at|date:'yyyyMMdd')">
             <div class="TimelineItem-badge" [ngStyle]="{background: getBackgroundForClassType(classe.classeType)}">
                 <i class="ion ion-ios-briefcase color-text-white"></i>
@@ -14,6 +23,7 @@
                 <strong>{{ classe.title }}</strong>
                 - durée : {{ classe.duration }}h le {{ classe.happen_at|date:'dd/MM/yyyy' }} à {{ classe.happen_at|date:'HH:mm' }},
                 avec {{ classe.creatorFirstName }} {{ classe.creatorLastName }}, modalité : {{ classe.modalityName }}
+                <button *ngIf="!isGranted()" class="btn">M'inscrire</button>
             </div>
         </div>
     </div>

@@ -20,6 +20,7 @@ import { CalendarService } from "./services/calendar.service";
 import {DatePipe} from '@angular/common';
 import { AppSecurityComponent } from './app-security/app-security.component';
 import {SecurityService} from "./services/security.service";
+import {SearchPipe} from "./app-calendar/search.pipe";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {SecurityService} from "./services/security.service";
     BoxOverlayComponent,
     MainHeaderComponent,
     AppCalendarComponent,
-    AppSecurityComponent
+    AppSecurityComponent,
+      SearchPipe
   ],
   imports: [
     BrowserModule,

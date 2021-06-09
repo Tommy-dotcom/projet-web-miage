@@ -3,6 +3,7 @@ import {CalendarService} from "../services/calendar.service";
 import {HttpClient} from "@angular/common/http";
 import {DatePipe} from "@angular/common";
 import {SecurityService} from "../services/security.service";
+import {Cours} from "../classes/classe";
 
 @Component({
   selector: 'app-calendar',
@@ -10,6 +11,7 @@ import {SecurityService} from "../services/security.service";
   styleUrls: ['./app-calendar.component.scss']
 })
 export class AppCalendarComponent implements OnInit {
+    textFilter = "";
 
     constructor(private http: HttpClient,
         private calendarService: CalendarService,
