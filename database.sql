@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  mer. 09 juin 2021 à 18:52
+-- Généré le :  mer. 09 juin 2021 à 22:27
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.3.8
 
@@ -36,17 +36,19 @@ CREATE TABLE `classe` (
 --
 
 INSERT INTO `classe` (`id`, `title`, `happen_at`, `duration`, `created_by`, `classe_type_id`, `formation_id`, `modality_id`) VALUES
-(2, 'Développement d applications Web 2.0', '2021-04-12 10:15:00', 2, 1, 2, 1, 1),
-(4, 'Réunion orientation', '2021-04-15 00:00:00', 3, 2, 3, 6, 1),
-(5, 'test de création de formation ', '2020-12-02 23:00:00', 2, 2, 1, 1, 1),
-(6, 'Développement d applications Web 2.0', '2021-06-24 08:00:00', 3, 1, 4, 1, 1),
-(7, 'Programmation répartie', '2021-06-24 10:00:00', 2, 3, 1, 1, 1),
-(8, 'Applications objets conurrents', '2021-06-24 14:00:00', 2, 3, 1, 1, 1),
-(9, 'Gestion de projets informatique', '2021-06-24 16:00:00', 3, 2, 2, 1, 1),
-(10, 'Analyse Financière', '2021-06-25 09:00:00', 3, 2, 3, 1, 1),
-(11, 'Test ', '2021-06-16 00:00:00', 3, 1, 2, 2, NULL),
-(12, 'Test ', '2021-06-16 00:00:00', 3, 1, 2, 2, NULL),
-(13, 'test de création de formation ', '2020-12-02 23:00:00', 2, 2, 1, 1, NULL);
+(2, ''Développement d\''applications Web 2.0'', ''2021-04-12 10:15:00'', 2, 1, 2, 1, 1),
+(4, ''Réunion orientation'', ''2021-04-15 00:00:00'', 3, 2, 3, 6, 1),
+(5, ''test de création de formation '', ''2020-12-02 23:00:00'', 2, 2, 1, 1, 1),
+(6, ''Développement d\''applications Web 2.0'', ''2021-06-24 08:00:00'', 3, 1, 4, 1, 1),
+(7, ''Programmation répartie'', ''2021-06-24 10:00:00'', 2, 3, 1, 1, 1),
+(8, ''Applications objets conurrents'', ''2021-06-24 14:00:00'', 2, 3, 1, 1, 1),
+(9, ''Gestion de projets informatique'', ''2021-06-24 16:00:00'', 3, 2, 2, 1, 3),
+(10, ''Analyse Financière'', ''2021-06-25 09:00:00'', 3, 2, 3, 1, 1),
+(11, ''Test '', ''2021-06-16 00:00:00'', 3, 1, 2, 2, NULL),
+(12, ''Test '', ''2021-06-16 00:00:00'', 3, 1, 2, 2, NULL),
+(13, ''test de création de formation '', ''2020-12-02 23:00:00'', 2, 2, 1, 1, NULL),
+(14, ''Piscine 42 '', ''2021-06-15 00:00:00'', 3, 3, 3, 4, 2),
+(15, ''Piscine 42 '', ''2021-06-15 00:00:00'', 3, 3, 3, 4, 2);
 
 -- --------------------------------------------------------
 
@@ -64,10 +66,10 @@ CREATE TABLE `classe_type` (
 --
 
 INSERT INTO `classe_type` (`id`, `name`) VALUES
-(1, 'Cours'),
-(2, 'TP'),
-(3, 'TD'),
-(4, 'Examen');
+(1, ''Cours''),
+(2, ''TP''),
+(3, ''TD''),
+(4, ''Examen'');
 
 -- --------------------------------------------------------
 
@@ -85,13 +87,13 @@ CREATE TABLE `formation` (
 --
 
 INSERT INTO `formation` (`id`, `name`) VALUES
-(1, 'MIAGE'),
-(2, 'IUT Informatique'),
-(3, 'Toulouse Business School'),
-(4, 'H.E.C.'),
-(5, 'Sciences Po'),
-(6, 'Ecoles des mines'),
-(7, 'Polytechnique');
+(1, ''MIAGE''),
+(2, ''IUT Informatique''),
+(3, ''Toulouse Business School''),
+(4, ''H.E.C.''),
+(5, ''Sciences Po''),
+(6, ''Ecoles des mines''),
+(7, ''Polytechnique'');
 
 -- --------------------------------------------------------
 
@@ -109,9 +111,9 @@ CREATE TABLE `modality` (
 --
 
 INSERT INTO `modality` (`id`, `name`) VALUES
-(1, 'présentiel'),
-(2, 'distanciel'),
-(3, 'hybride');
+(1, ''présentiel''),
+(2, ''distanciel''),
+(3, ''hybride'');
 
 -- --------------------------------------------------------
 
@@ -135,8 +137,16 @@ CREATE TABLE `student` (
   `id` int(11) NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
-  `formation_id` int(11) NOT NULL
+  `formation_id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `student`
+--
+
+INSERT INTO `student` (`id`, `first_name`, `last_name`, `formation_id`, `email`) VALUES
+(1, ''Thomas'', ''Lamothe'', 1, ''totolamothe65@gmail.com'');
 
 -- --------------------------------------------------------
 
@@ -157,10 +167,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `user_type`) VALUES
-(1, 'Thomas', 'Lamothe', 'thomaslamothe@free.fr', 1),
-(2, 'Filiz', 'Kara', 'filiz.kara@toulouse.miage.fr', 1),
-(3, 'Quentin', 'Guerin', 'guerin.quentin@toulouse.miage.fr', 1),
-(5, 'Jimi', 'Hendrix', 'jimi.hendrix@ut-capitole.fr', 2);
+(1, ''Thomas'', ''Lamothe'', ''thomaslamothe@free.fr'', 2),
+(2, ''Filiz'', ''Kara'', ''filiz.kara@toulouse.miage.fr'', 1),
+(3, ''Quentin'', ''Guerin'', ''guerin.quentin@toulouse.miage.fr'', 2),
+(5, ''Jimi'', ''Hendrix'', ''jimi.hendrix@ut-capitole.fr'', 2);
 
 -- --------------------------------------------------------
 
@@ -178,8 +188,8 @@ CREATE TABLE `user_type` (
 --
 
 INSERT INTO `user_type` (`id`, `name`) VALUES
-(1, 'secrétariat'),
-(2, 'enseignant ');
+(1, ''secrétariat''),
+(2, ''enseignant '');
 
 --
 -- Index pour les tables déchargées
@@ -249,7 +259,7 @@ ALTER TABLE `user_type`
 -- AUTO_INCREMENT pour la table `classe`
 --
 ALTER TABLE `classe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT pour la table `classe_type`
@@ -279,7 +289,7 @@ ALTER TABLE `presence`
 -- AUTO_INCREMENT pour la table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `user`
